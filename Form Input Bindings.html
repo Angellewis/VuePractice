@@ -10,85 +10,152 @@
 
 <body>
     <section id="app">
-        <div id="nameDiv">
+        <div id="headerDiv">
             <p>Ejercicios sobre (Form Input Bindings)</p>
-
-            <p>Type you name please: </p>
-            <!--.lazy example, updates the input after you finish typing.-->
-            <input v-model.lazy="message" placeholder="Place you name here...">
-
-            <p>Thanks for using our app: {{message}}</p>
-
-            <input v-model.number="age" type="number">
-            <p>{{age}}</p>
-
-            <input v-model.trim="trim">
-            <p>{{trim}}</p>
-        </div>
-        <div id="addressDiv">
-            <span>Please let us know your address:</span>
-            <textarea v-model="address" placeholder="Place your address here..."></textarea>
-        </div>
-        <div id="interestDiv">
-            <input type="checkbox" id="Interes1" value="Sports" v-model="checkedInterests">
-            <label for="Sports">Sports</label>
-            <input type="checkbox" id="Interes2" value="Video Games" v-model="checkedInterests">
-            <label for="Video Games">Video Games</label>
-            <input type="checkbox" id="Interes2" value="Health" v-model="checkedInterests">
-            <label for="Health">Health</label>
-        </div>
-        <div id="genderDiv">
-            <input type="radio" id="Male" value="Male" v-model="gender">
-            <label for="Male">Male</label>
             <br>
-            <input type="radio" id="Female" value="Female" v-model="gender">
-            <label for="Female">Female</label>
-            <br>
-            <span>gender: {{ gender }}</span>
+            <div>
+                <div>
+                    <img class="cat_circle" src="./burguer.png">
+                </div>
+                <div>
+                    <p class="texto">Client Form.</p>
+                </div>
+            </div>
         </div>
-        <div id="selectDiv">
-            <select v-model="favoriteStore">
-                <option disabled value="">Please select you favorite store</option>
-                <option>Las americas</option>
-                <option>Villa Mella</option>
-                <option>Guaricanos</option>
-            </select>
-            <span>Selected: {{ favoriteStore }}</span>
-        </div>
-        <div id="multiSelectDiv">
-            <select v-model="favoriteProducts" multiple>
-                <option>BaconCheese Burguer</option>
-                <option>Baconator Deluxe</option>
-                <option>Double McWrap</option>
-            </select>
-            <br>
-            <span>Selected: {{ favoriteProducts }}</span>
-        </div>
-        <div id="mappedSelect">
-            <select v-model="selected">
-                <option v-for="user in users" v-bind:value="user.Name">
-                    {{ user.Name }}
-                </option>
-            </select>
-            <span>Selected: {{ selected }}</span>
-        </div>
-        <div id="checkboxDiv">
-            <p>Tu comes: {{eat}}</p>
-            <input type="checkbox" v-model="toggle" true-value="yes" false-value="no">
-            <br>
-            <button @click="submit">Submit</button>
-        </div>
-        <div>
-            <ol>
-                <li v-for="data in users" :key="data.id">
-                    {{ data.Name }}
-                </li>
-            </ol>
-        </div>
+        <form id="burguerForm">
+            <div id="nameDiv">
+                <p>Type you name please: </p>
+                <input v-model="name" placeholder="Place you name here...">
+                <!--.Numer example, converts the string into numer type directly.-->
+                <p>What is your age? </p>
+                <input v-model.number="age" type="number">
+                <br>
+            </div>
+            <div id="addressDiv">
+                <span>Please let us know your address:</span>
+                <br>
+                <textarea style="height: 100px; width: 350px;" v-model="address"
+                    placeholder="Place your address here..."></textarea>
+            </div>
+            <div id="interestDiv">
+                <p>What are your interests?</p>
+                <label for="Sports" style="margin-right: 10px;">Sports<input type="checkbox" id="Interes1"
+                        value="Sports" v-model="checkedInterests"></label>
+                <label for="Video Games" style="margin-right: 10px;">Video Games<input type="checkbox" id="Interes2"
+                        value="Video Games" v-model="checkedInterests"></label>
+                <label for="Health" style="margin-right: 10px;">Health<input type="checkbox" id="Interes2"
+                        value="Health" v-model="checkedInterests"></label>
+            </div>
+            <div id="genderDiv">
+                <p>Please select your gender: </p>
+                <label for="Male">Male<input type="radio" id="Male" value="Male" v-model="gender"></label>
+                <label for="Female">Female<input type="radio" id="Female" value="Female" v-model="gender"></label>
+                <br>
+            </div>
+            <div id="selectDiv">
+                <p>Please select you favorite store: </p>
+                <select v-model="favoriteStore">
+                    <option disabled value="">Stores...</option>
+                    <option>Las americas</option>
+                    <option>Villa Mella</option>
+                    <option>Guaricanos</option>
+                </select>
+                <br>
+            </div>
+            <div id="multiSelectDiv">
+                <p>Which are your favorite hamburguers from our menu? </p>
+                <select v-model="favoriteProducts" multiple>
+                    <option>BaconCheese Burguer</option>
+                    <option>Baconator Deluxe</option>
+                    <option>Double McWrap</option>
+                </select>
+                <br>
+            </div>
+            <div id="mappedSelect">
+                <p>Who is your favorite chef?</p>
+                <select v-model="selectedChef">
+                    <option v-for="user in users" v-bind:value="user.Name + ' ' +user.LastName">
+                        {{ user.Name }} {{user.LastName}}
+                    </option>
+                </select>
+                <br>
+            </div>
+            <div id="modifiersDiv">
+                <p>Please, give us your overall opinion: </p>
+                <!--.lazy example, updates the input after you finish typing.-->
+                <!--.trim example, eliminates whitespaces in the variables.-->
+                <textarea style="height: 100px; width: 350px;" v-model.lazy.trim="opinion"
+                    placeholder="Place your opinion here..."></textarea>
+            </div>
+            <div id="submitForm">
+                <button type="button" @click="ShowData">Submit</button>
+            </div>
+        </form>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="./js/main.js"> </script>
 </body>
+
+<style>
+    #app {
+        font-family: Arial, Helvetica, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+    }
+
+    body {
+        margin: 0;
+        background: #eee;
+    }
+
+    form {
+        max-width: 420px;
+        margin: 30px;
+        background: white;
+        text-align: left;
+        padding: 40px;
+        border-radius: 10px;
+    }
+
+    label {
+        color: #aaa;
+        display: inline-block;
+        margin: 25px 0 15px;
+        font-size: 0.6em;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+
+    input {
+        display: block;
+        padding: 10px 6px;
+        width: 100%;
+        box-sizing: border-box;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        color: #555;
+    }
+
+    .cat_circle {
+        width: 100px;
+        height: 100px;
+        background-size: cover;
+        display: block;
+        float: left;
+        margin-top: -60px;
+        margin-left: 100px;
+    }
+
+    .texto {
+        float: left;
+        margin-top: -15px;
+        margin-left: 10px;
+    }
+</style>
 
 </html>

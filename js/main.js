@@ -1,7 +1,7 @@
 var instance = {
     el: '#app',
     data: {
-        selected: '',
+        selectedChef: '',
         users: [{
             "id": 1,
             "Name": "Ettie",
@@ -15,22 +15,31 @@ var instance = {
             "Email": "rmalarkey1@seesaa.net",
             "gender": "Agender"
         }],
-        message: "",
+        name: "",
         address: "",
         checkedInterests: [],
         gender: "",
         favoriteStore: '',
         favoriteProducts: [],
         age: "",
-        trim: "",
-        toggle: {
-            eat: ""
-        }
+        opinion: "",
     },
     methods: {
-        submit(){
-            alert(typeof this.age);
-        }
+        ShowData: function () {
+            var agree = confirm("Do you want to send this info?\n" +
+            "Name: " + this.name + "\n" +
+            "Age: " + this.age + "\n" +
+            "Address: " + this.address + "\n" +
+            "Interests: " + this.checkedInterests + "\n" +
+            "Gender: " + this.gender + "\n" +
+            "Favorite Store: " + this.favoriteStore + "\n" +
+            "Favorite Products: " + this.favoriteProducts + "\n" +
+            "Your Opinion: " + this.opinion);
+            if (agree)
+                return true;
+            else
+                return false;
+        },
     }
 };
 var app = new Vue(instance);
