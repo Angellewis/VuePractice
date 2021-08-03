@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkShop Client</title>
+</head>
+
+<body>
+    <section id="app">
+        <div id="nameDiv">
+            <p>Ejercicios sobre (Form Input Bindings)</p>
+
+            <p>Type you name please: </p>
+            <!--.lazy example, updates the input after you finish typing.-->
+            <input v-model.lazy="message" placeholder="Place you name here...">
+
+            <p>Thanks for using our app: {{message}}</p>
+
+            <input v-model.number="age" type="number">
+            <p>{{age}}</p>
+
+            <input v-model.trim="trim">
+            <p>{{trim}}</p>
+        </div>
+        <div id="addressDiv">
+            <span>Please let us know your address:</span>
+            <textarea v-model="address" placeholder="Place your address here..."></textarea>
+        </div>
+        <div id="interestDiv">
+            <input type="checkbox" id="Interes1" value="Sports" v-model="checkedInterests">
+            <label for="Sports">Sports</label>
+            <input type="checkbox" id="Interes2" value="Video Games" v-model="checkedInterests">
+            <label for="Video Games">Video Games</label>
+            <input type="checkbox" id="Interes2" value="Health" v-model="checkedInterests">
+            <label for="Health">Health</label>
+        </div>
+        <div id="genderDiv">
+            <input type="radio" id="Male" value="Male" v-model="gender">
+            <label for="Male">Male</label>
+            <br>
+            <input type="radio" id="Female" value="Female" v-model="gender">
+            <label for="Female">Female</label>
+            <br>
+            <span>gender: {{ gender }}</span>
+        </div>
+        <div id="selectDiv">
+            <select v-model="favoriteStore">
+                <option disabled value="">Please select you favorite store</option>
+                <option>Las americas</option>
+                <option>Villa Mella</option>
+                <option>Guaricanos</option>
+            </select>
+            <span>Selected: {{ favoriteStore }}</span>
+        </div>
+        <div id="multiSelectDiv">
+            <select v-model="favoriteProducts" multiple>
+                <option>BaconCheese Burguer</option>
+                <option>Baconator Deluxe</option>
+                <option>Double McWrap</option>
+            </select>
+            <br>
+            <span>Selected: {{ favoriteProducts }}</span>
+        </div>
+        <div id="mappedSelect">
+            <select v-model="selected">
+                <option v-for="user in users" v-bind:value="user.Name">
+                    {{ user.Name }}
+                </option>
+            </select>
+            <span>Selected: {{ selected }}</span>
+        </div>
+        <div id="checkboxDiv">
+            <p>Tu comes: {{eat}}</p>
+            <input type="checkbox" v-model="toggle" true-value="yes" false-value="no">
+            <br>
+            <button @click="submit">Submit</button>
+        </div>
+        <div>
+            <ol>
+                <li v-for="data in users" :key="data.id">
+                    {{ data.Name }}
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="./js/main.js"> </script>
+</body>
+
+</html>
