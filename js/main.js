@@ -4,16 +4,12 @@ var instance = {
         selectedChef: '',
         users: [{
             "id": 1,
-            "Name": "Ettie",
-            "LastName": "Wines",
-            "Email": "ewines0@ucoz.com",
-            "gender": "Genderfluid"
+            "Name": "Juan David",
+            "LastName": "Matos",
         }, {
             "id": 2,
-            "Name": "Ram",
-            "LastName": "Malarkey",
-            "Email": "rmalarkey1@seesaa.net",
-            "gender": "Agender"
+            "Name": "Angel Lewis",
+            "LastName": "Del Rosario Terrero",
         }],
         name: "",
         address: "",
@@ -27,18 +23,24 @@ var instance = {
     methods: {
         ShowData: function () {
             var agree = confirm("Do you want to send this info?\n" +
-            "Name: " + this.name + "\n" +
-            "Age: " + this.age + "\n" +
-            "Address: " + this.address + "\n" +
-            "Interests: " + this.checkedInterests + "\n" +
-            "Gender: " + this.gender + "\n" +
-            "Favorite Store: " + this.favoriteStore + "\n" +
-            "Favorite Products: " + this.favoriteProducts + "\n" +
-            "Your Opinion: " + this.opinion);
-            if (agree)
-                return true;
-            else
-                return false;
+                "Name: " + this.name + "\n" +
+                "Age: " + this.age + "\n" +
+                "Address: " + this.address + "\n" +
+                "Interests: " + this.checkedInterests + "\n" +
+                "Gender: " + this.gender + "\n" +
+                "Favorite Store: " + this.favoriteStore + "\n" +
+                "Favorite Products: " + this.favoriteProducts + "\n" +
+                "Your Opinion: " + this.opinion);
+            if (agree) {
+                this.name = "";
+                this.address = "";
+                this.checkedInterests = [];
+                this.gender = "";
+                this.favoriteStore = '';
+                this.favoriteProducts = [];
+                this.age = "";
+                this.opinion = "";
+            }
         },
     }
 };
