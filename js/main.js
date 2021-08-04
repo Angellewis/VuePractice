@@ -1,8 +1,7 @@
 var instance = {
     el: '#app',
     data: {
-        selectedChef: '',
-        users: [{
+        chefs: [{
             "id": 1,
             "Name": "Juan David",
             "LastName": "Matos",
@@ -11,33 +10,43 @@ var instance = {
             "Name": "Angel Lewis",
             "LastName": "Del Rosario Terrero",
         }],
+        users: [],
+        selectedChef: '',
         name: "",
         address: "",
         checkedInterests: [],
         gender: "",
         favoriteStore: '',
         favoriteProducts: [],
-        age: "",
+        age: 0,
         opinion: "",
+        status: false
     },
     methods: {
         ShowData: function () {
-            var agree = confirm("Do you want to send this info?\n" +
-                "Name: " + this.name + "\n" +
-                "Age: " + this.age + "\n" +
-                "Address: " + this.address + "\n" +
-                "Interests: " + this.checkedInterests + "\n" +
-                "Gender: " + this.gender + "\n" +
-                "Favorite Store: " + this.favoriteStore + "\n" +
-                "Favorite Products: " + this.favoriteProducts + "\n" +
-                "Your Opinion: " + this.opinion);
-            if (agree) {
-                this.name = "";
-                this.address = "";
+            let sure = confirm("¿Está seguro que desea continuar?");
+            if (sure) {
+                this.status = true;
+                let data = {
+                    "id": this.users.length + 1,
+                    "Name": this.name,
+                    "Age": this.age,
+                    "address": this.address,
+                    "checkedInterests": this.checkedInterests.join(','),
+                    "gender": this.gender,
+                    "favoriteStore": this.favoriteStore,
+                    "favoriteProducts": this.favoriteProducts.join(','),
+                    "selectedChef": this.selectedChef,
+                    "opinion": this.opinion
+                }
+                this.users.push(data);
+                this.selectedChef = '';
+                this.name = '';
+                this.address = '';
                 this.checkedInterests = [];
-                this.gender = "";
-                this.favoriteStore = '';
-                this.favoriteProducts = [];
+                this.gender = '';
+                this.favoriteStore = "";
+                this.favoriteProducts = '';
                 this.age = "";
                 this.opinion = "";
             }
