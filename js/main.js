@@ -40,7 +40,11 @@ var instance = {
                     "opinion": this.opinion
                 }
                 this.users.push(data);
-                this.selectedChef = '';
+                this.ClearData();
+            }
+        },
+        ClearData: function () {
+            this.selectedChef = '';
                 this.name = '';
                 this.address = '';
                 this.checkedInterests = [];
@@ -49,7 +53,6 @@ var instance = {
                 this.favoriteProducts = '';
                 this.age = "";
                 this.opinion = "";
-            }
         },
     }
 };
