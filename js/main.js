@@ -24,7 +24,7 @@ var instance = {
     },
     methods: {
         ShowData: function () {
-            let sure = confirm("¿Está seguro que desea continuar?");
+            let sure = confirm("¿Are you sure you want to confinue?");
             if (sure) {
                 this.status = true;
                 let data = {
