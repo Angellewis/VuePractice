@@ -45,14 +45,14 @@ var instance = {
         },
         ClearData: function () {
             this.selectedChef = '';
-                this.name = '';
-                this.address = '';
-                this.checkedInterests = [];
-                this.gender = '';
-                this.favoriteStore = "";
-                this.favoriteProducts = '';
-                this.age = "";
-                this.opinion = "";
+            this.name = '';
+            this.address = '';
+            this.checkedInterests = [];
+            this.gender = '';
+            this.favoriteStore = "";
+            this.favoriteProducts = '';
+            this.age = "";
+            this.opinion = "";
         },
     }
 };
